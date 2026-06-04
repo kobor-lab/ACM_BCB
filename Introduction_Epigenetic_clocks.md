@@ -6,7 +6,7 @@ Epigenetics refers to chemical modifications to DNA and its associated regulator
 
 ![Overview of epigenetic mechanisms](figures/Epigenetic_modifications.png)
 
-*Figure 1. Overview of common epigenetic modifications.*
+*Figure 1. Overview of common epigenetic modifications (Aristizabal et al. (2019).*
 
 ---
 
@@ -73,7 +73,7 @@ Epigenetic age estimates can be influenced by several biological including tissu
 
 ![Factors influencing epigenetic aging](figures/Factors_influencing_EpigeneticAging.png)
 
-*Figure 3. Biological and technical factors that influence epigenetic age estimates.*
+*Figure 3. Biological and technical factors that influence epigenetic age estimates (Adapted and modified from materials developed by the Merrill Lab).*
 
 ---
 
@@ -84,7 +84,7 @@ The discrepancy between DNA methylation-predicted age and chronological age is c
 
 ![Epigenetic age acceleration associations](figures/EAA.png)
 
-*Figure 4. EAA associations.*
+*Figure 4. EAA associations (Chervova et al. (2024)).*
 
 ---
 
