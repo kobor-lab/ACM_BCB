@@ -23,3 +23,8 @@ By the end of this tutorial, participants will be able to:
 ### Module 1: Background Concepts
 
 - [Introduction to Epigenetic Clocks](Introduction_Epigenetic_clocks.md)
+
+### Module 2: Epigenetic Clock Analysis
+
+- [Epigenetic Clock Analysis](Epigenetic_Clock_Analysis.md)
+- 
