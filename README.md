@@ -4,7 +4,7 @@
 
 # Epigenetic Clock Workshop
 
-*A hands-on interactive workshop on DNA methylation biomarkers of aging*
+*A hands-on interactive workshop on DNA methylation-based biomarkers of aging*
 
 ## Tutorial Abstract
 
