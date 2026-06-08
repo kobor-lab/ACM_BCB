@@ -288,7 +288,7 @@ label(df$Cohort) <- "Cohort"
 # Create Table 1
 table1(~ Age + Sex|Cohort, data = df)
 ```
-
+![table 1](figures/table1.png)
 
 ### DNA methylation beta value density
 ```{r}
@@ -307,7 +307,7 @@ ggplot(Beta_Plot, aes_string("Beta_Value", group="Sample_Name",label = "Sample_N
   )
 
 ```
-
+![DNAm_denisty_clock](figures/DNAm_denisty_clock.png)
 
 
 > **Key takeaway:** The bimodal distribution: with a peak near 0 (fully unmethylated) and near 1 (fully methylated),is expected in whole blood DNA methylation profiles.
@@ -379,7 +379,7 @@ tibble(
     y        = "Variance Explained (%)"
   )
 ```
-
+![scree](figures/PCA_scree.png)
 
 ### Top PCs and association with variables and predicted cell-type proportions
 
@@ -445,7 +445,7 @@ p_sex <- ggplot(pca_loadings , aes(x = PC1, y = PC2, colour = Sex)) +
 p_sex
 ```
 
-
+![PCA_by_sex](figures/PCA_by_sex.png)
 
 Neutrophil proportion is significantly correlated with adjusted PC3.
 ```{r pca-celltype}
@@ -461,6 +461,7 @@ ggplot(pca_loadings, aes(x = PC3, y = Neu)) +
   theme_classic()
 
 ```
+![PCA_neu](figures/PCA_neu.png)
 
 >**Key Takeaways** — Activity 1
 
@@ -548,7 +549,10 @@ plotClockMdAE(SampleInfo_clock, "PhenoAge")
 plotClockMdAE(SampleInfo_clock, "GrimAge")
 
 ```
-
+![clock_Horvath_Age](figures/clock_Horvath_Age.png)
+![clock_Hannum_Age](figures/clock_Hannum_Age.png)
+![clock_PhenoAge_Age](figures/clock_PhenoAge_Age.png)
+![clock_GrimAge_Age](figures/clock_GrimAge_Age.png)
 
 ## Clock and age inter-correlation heatmap
 
@@ -564,8 +568,6 @@ diag(cor_mat) <- NA
 
 pheatmap(
   cor_mat,
-  # color           = colorRampPalette(c("#D73027","white","#1A6FC4"))(100),
-  # breaks          = seq(-1, 1, length.out = 101),
   display_numbers = TRUE,
   number_format   = "%.2f",
   fontsize_number = 10,
@@ -574,7 +576,7 @@ pheatmap(
   na_col          = "lightgrey",
 )
 ```
-
+![clock_heatmap](figures/clock_heatmap.png)
 
 > **Key Takeaways** — Activity 2
 
@@ -639,8 +641,6 @@ annotation_col <- data.frame(
 
 pheatmap(
   cor_mat,
-  # color           = colorRampPalette(c("#D73027","white","#1A6FC4"))(100),
-  # breaks          = seq(-1, 1, length.out = 101),
   display_numbers = TRUE,
   number_format   = "%.2f",
   fontsize_number = 10,
@@ -652,6 +652,7 @@ pheatmap(
 )
 
 ```
+![clock_EAA_EAD](figures/clock_EAA_EAD.png)
 
 ## EAA, EAD vs Age
 ```{r}
@@ -727,7 +728,7 @@ label(df$surgery) <- "Surgery"
 table1(~ Age + Sex|surgery, data = df)
 
 ```
-
+![table1_ACHD](figures/table1_ACHD.png)
 
 
 
@@ -755,6 +756,7 @@ ggplot(SampleInfo_ACHD, aes(x = surgery, y = Age, fill = surgery)) +
   theme_classic(base_size = 13) +
   theme(legend.position = "none")
 ```
+![ACHD_age_by_surgery](figures/ACHD_age_by_surgery.png)
 
 ## EAA calculation
 
