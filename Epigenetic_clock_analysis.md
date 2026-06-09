@@ -24,9 +24,7 @@ This hands-on tutorial walks through <strong>four activities</strong>:
 
 [Link to knitted HTML](https://github.com/kobor-lab/ACM_BCB/blob/main/Epigenetic_clock_analysis_HTML.html)
 
-<div style="display:flex; gap:18px; flex-wrap:wrap; margin:16px 0 24px 0;">
-<div style="flex:1; min-width:220px; border-radius:8px; padding:16px 18px; background:#eaf4fb; border:1px solid #aed6f1;">
-<h4 style="margin:0 0 8px 0; font-size:0.85em; text-transform:uppercase; letter-spacing:0.05em; color:#1a5276;"> What's Covered</h4>
+**What's Covered**
 
 - PCA of whole blood DNA methylation beta values
 - Epigenetic clock calculation (1st, 2nd, and 3rd generation)
@@ -34,16 +32,10 @@ This hands-on tutorial walks through <strong>four activities</strong>:
 - Robust linear regression for association testing
 - Cell-type correction strategies
 
-</div>
-<div style="flex:1; min-width:220px; border-radius:8px; padding:16px 18px; background:#fdf2f8; border:1px solid #d7bde2;">
-<h4 style="margin:0 0 8px 0; font-size:0.85em; text-transform:uppercase; letter-spacing:0.05em; color:#6c3483;"> Out of Scope</h4>
+**Out of Scope**
 
 - DNAm QC & preprocessing — see [Zhuang & Jude et al. 2025](https://www.life-science-alliance.org/content/8/9/e202403155) and the [EPICv2 QC pipeline](https://github.com/kobor-lab/EPICv2_QC_preprocessing); also [Konwar et al. 2021](https://link.springer.com/article/10.1186/s13072-021-00428-1) and the [DNAm QC and preprocessing pipeline](https://github.com/kobor-lab/Public-Scripts/blob/master/COVID-19/DNAme%20preprocessing.Rmd)
 - Cell-type deconvolution of 12 immune cell types by [Salas et al. 2022](https://www.nature.com/articles/s41467-021-27864-7)
-
-</div>
-</div>
-
 
 ---
 
@@ -435,7 +427,7 @@ The same association tests using all array probes show a similar pattern:
 ### PCA scatter plots
 
 Sex separates clearly along adjusted PC2.
-```{r pca-sex}
+```{r}
 # PC1 vs PC2 coloured by sex
 pca_loadings <- cbind(SampleInfo, data.frame(PC1=Loadings[,1], PC2=Loadings[,2], PC3=Loadings[,3]))
 p_sex <- ggplot(pca_loadings , aes(x = PC1, y = PC2, colour = Sex)) +
@@ -963,8 +955,6 @@ Overall, cell type compositions are typically accounted for EAA association anal
 
 ## References
 
-<div style="background:#f4f9fd; border-left:4px solid #aed6f1; border-radius:0 4px 4px 0; padding:14px 18px; margin:20px 0;">
-
 - Horvath S. (2013). DNA methylation age of human tissues and cell types. [**Genome Biology**](https://doi.org/10.1186/gb-2013-14-10-r115)
 - Hannum G. et al. (2013). Genome-wide methylation profiles reveal quantitative views of human aging rates. [**Molecular Cell**](https://doi.org/10.1016/j.molcel.2012.10.016)
 - Levine ME et al. (2018). An epigenetic biomarker of aging for lifespan and healthspan. [**Aging**](https://doi.org/10.18632/aging.101414)
@@ -974,7 +964,7 @@ Overall, cell type compositions are typically accounted for EAA association anal
 - Konwar et al. (2021). Risk-focused differences in molecular processes implicated in SARS-CoV-2 infection: corollaries in DNA methylation and gene expression. [**Epigenetics & Chromatin**](https://link.springer.com/article/10.1186/s13072-021-00428-1) 
 - Jain & Zhuang et al. (2026). Epigenetic age acceleration in young adults with congenital heart disease. [**Clinical Epigenetics**](https://link.springer.com/article/10.1186/s13148-026-02049-5)
 
-</div>
+
 
 
 # Session Information
@@ -982,4 +972,49 @@ Overall, cell type compositions are typically accounted for EAA association anal
 ```{r}
 # Record software versions for reproducibility 
 sessionInfo()
+## R version 4.5.2 (2025-10-31 ucrt)
+## Platform: x86_64-w64-mingw32/x64
+## Running under: Windows 11 x64 (build 26200)
+## 
+## Matrix products: default
+##   LAPACK version 3.12.1
+## 
+## locale:
+## [1] LC_COLLATE=English_United States.utf8 
+## [2] LC_CTYPE=English_United States.utf8   
+## [3] LC_MONETARY=English_United States.utf8
+## [4] LC_NUMERIC=C                          
+## [5] LC_TIME=English_United States.utf8    
+## 
+## time zone: America/Vancouver
+## tzcode source: internal
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+##  [1] robustbase_0.99-7  sfsmisc_1.1-24     MASS_7.3-65        pheatmap_1.0.13   
+##  [5] DunedinPACE_0.99.0 patchwork_1.3.2    ggpubr_0.6.3       ggplot2_4.0.3     
+##  [9] methylCIPHER_0.2.0 broom_1.0.13       table1_1.5.1       reshape2_1.4.5    
+## [13] tidyr_1.3.2        dplyr_1.2.1        knitr_1.51        
+## 
+## loaded via a namespace (and not attached):
+##  [1] sass_0.4.10           generics_0.1.4        rstatix_0.7.3        
+##  [4] lattice_0.22-7        stringi_1.8.7         digest_0.6.39        
+##  [7] magrittr_2.0.5        evaluate_1.0.5        grid_4.5.2           
+## [10] RColorBrewer_1.1-3    fastmap_1.2.0         Matrix_1.7-4         
+## [13] plyr_1.8.9            jsonlite_2.0.0        backports_1.5.1      
+## [16] Formula_1.2-5         mgcv_1.9-3            purrr_1.2.2          
+## [19] preprocessCore_1.72.0 scales_1.4.0          jquerylib_0.1.4      
+## [22] abind_1.4-8           cli_3.6.6             rlang_1.2.0          
+## [25] splines_4.5.2         withr_3.0.2           cachem_1.1.0         
+## [28] yaml_2.3.12           tools_4.5.2           checkmate_2.3.4      
+## [31] ggsignif_0.6.4        vctrs_0.7.3           R6_2.6.1             
+## [34] lifecycle_1.0.5       stringr_1.6.0         car_3.1-5            
+## [37] pkgconfig_2.0.3       pillar_1.11.1         bslib_0.11.0         
+## [40] gtable_0.3.6          glue_1.8.1            Rcpp_1.1.1-1.1       
+## [43] DEoptimR_1.2-0        xfun_0.58             tibble_3.3.1         
+## [46] tidyselect_1.2.1      farver_2.1.2          nlme_3.1-168         
+## [49] htmltools_0.5.9       labeling_0.4.3        rmarkdown_2.31       
+## [52] carData_3.0-6         compiler_4.5.2        S7_0.2.2
 ```
