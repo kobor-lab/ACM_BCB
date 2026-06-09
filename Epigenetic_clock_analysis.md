@@ -3,6 +3,8 @@
 ## How Old Are You Really? From DNA Methylation to Biological Age
 
 ### A Hands-On Workshop
+
+
 ---
 
 <div style="background: linear-gradient(135deg, #1a3a5c 0%, #2E75B6 100%); color: white; border-radius: 10px; padding: 24px 28px; margin-bottom: 24px;">
@@ -17,6 +19,10 @@ This hands-on tutorial walks through <strong>four activities</strong>:
 <li><strong>Activity 4</strong> &#x2014; Association analyses linking EAA to health-related variables, including Adults with Congenital Heart Disease (ACHD) surgery status with and without Age or cell-type correction</li>
 </ol>
 </div>
+
+[Link to R markdown file](https://github.com/kobor-lab/ACM_BCB/blob/main/Epigenetic_clock_analysis_RMD.Rmd)
+
+[Link to knitted HTML](https://github.com/kobor-lab/ACM_BCB/blob/main/Epigenetic_clock_analysis_HTML.html)
 
 <div style="display:flex; gap:18px; flex-wrap:wrap; margin:16px 0 24px 0;">
 <div style="flex:1; min-width:220px; border-radius:8px; padding:16px 18px; background:#eaf4fb; border:1px solid #aed6f1;">
