@@ -264,7 +264,7 @@ This activity uses a subset of samples and CpGs from dataset [GSE286313](https:/
 ## Load beta value and Sample metadata
 The provided beta matrix has been preprocessed (background correction, functional normalization, batch correction for technical batches (Chip ID and Chip position))
 
-```{r }
+```{r}
 SampleInfo <- readRDS("data/SampleInfo_n44_VHAS_CALERIE.rds")
 beta_matrix <- readRDS("data/matrix_x_clock_probes_n44.rds")
 dim(beta_matrix) # 41353    44
@@ -591,7 +591,7 @@ pheatmap(
 **Goal**
 
 Derive **Epigenetic Age Difference (EAD)** and **Epigenetic Age Acceleration (EAA)** from clock estimates. visualize both metrics and explore their inter-correlations to understand the differences between these two measures and make informed choice for downstream association analyses.
-</div>
+
 
 ## Definitions and calculations
 
