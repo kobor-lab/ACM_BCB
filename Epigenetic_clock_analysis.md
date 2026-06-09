@@ -38,8 +38,8 @@ This hands-on tutorial walks through <strong>four activities</strong>:
 <div style="flex:1; min-width:220px; border-radius:8px; padding:16px 18px; background:#fdf2f8; border:1px solid #d7bde2;">
 <h4 style="margin:0 0 8px 0; font-size:0.85em; text-transform:uppercase; letter-spacing:0.05em; color:#6c3483;"> Out of Scope</h4>
 
-- **DNAm QC & preprocessing** — see [Zhuang & Jude et al. 2025](https://www.life-science-alliance.org/content/8/9/e202403155) and the [EPICv2 QC pipeline](https://github.com/kobor-lab/EPICv2_QC_preprocessing); also [Konwar et al. 2021](https://link.springer.com/article/10.1186/s13072-021-00428-1) and the [DNAm QC and preprocessing pipeline](https://github.com/kobor-lab/Public-Scripts/blob/master/COVID-19/DNAme%20preprocessing.Rmd)
-- **Cell-type deconvolution** of 12 immune cell types by [Salas et al. 2022](https://www.nature.com/articles/s41467-021-27864-7)
+- DNAm QC & preprocessing — see [Zhuang & Jude et al. 2025](https://www.life-science-alliance.org/content/8/9/e202403155) and the [EPICv2 QC pipeline](https://github.com/kobor-lab/EPICv2_QC_preprocessing); also [Konwar et al. 2021](https://link.springer.com/article/10.1186/s13072-021-00428-1) and the [DNAm QC and preprocessing pipeline](https://github.com/kobor-lab/Public-Scripts/blob/master/COVID-19/DNAme%20preprocessing.Rmd)
+- Cell-type deconvolution of 12 immune cell types by [Salas et al. 2022](https://www.nature.com/articles/s41467-021-27864-7)
 
 </div>
 </div>
@@ -51,7 +51,7 @@ This hands-on tutorial walks through <strong>four activities</strong>:
 
 ### Install required packages
 
-```{r install-packages, eval=FALSE}
+```{r}
 # # Run once to install all required packages
 packages <- c(
   "knitr",
@@ -343,7 +343,7 @@ paste0(round(Importance*100, 2)[1:7], "%") #print the variance accounted for the
 
 The top PC (PC0) accounted for 97.65% of the total variance,  is dropped because it mainly represent the bi-modal distribution of the beta value, the rest of PCs are re-calibrated 
 
-```{r pca}
+```{r}
 ### PCA ANOVA and correlation tests and plots----
 f_prefix <- "PCA_anova_correlation"
 p_title <- "R2 of top PCs and variable associations \n(clock probes)"
@@ -361,7 +361,7 @@ names(pca_adjusted_Importance) <- paste0("PC", 1:length(pca_adjusted_Importance)
 ```
 
 
-```{r pca-scree}
+```{r}
 #Scree plot: variance explained per PC (PC0 removed)
 tibble(
   PC              = paste0("PC", 1:6),
@@ -454,7 +454,8 @@ p_sex
 ![PCA_by_sex](figures/PCA_by_sex.png)
 
 Neutrophil proportion is significantly correlated with adjusted PC3.
-```{r pca-celltype}
+
+```{r}
 #PC scores vs cell-type proportions
 ggplot(pca_loadings, aes(x = PC3, y = Neu)) +
   geom_point(alpha = 0.6, color = "steelblue") +
@@ -497,13 +498,13 @@ Use the [**methylCIPHER**](https://github.com/HigginsChenLab/methylCIPHER) and [
 ## Calculating clocks with methylCIPHER
 
 
-```{r }
+```{r}
 SampleInfo <- readRDS("data/SampleInfo_n44_VHAS_CALERIE.rds")
 beta_matrix <- readRDS("data/matrix_x_clock_probes_n44.rds")
 # dim(beta_matrix) # 41353    44
 ```
 
-```{r clock-calculation}
+```{r}
 # ── methylCIPHER clock calculation 
 beta_matrix <- beta_matrix
 ## clean up meta for clock calculation----
@@ -562,7 +563,7 @@ plotClockMdAE(SampleInfo_clock, "GrimAge")
 
 ## Clock and age inter-correlation heatmap
 
-```{r clock-correlation}
+```{r}
 
 library(pheatmap)
 clock_with_age <- SampleInfo_clock %>% dplyr::select(Age, Horvath_age, Hannum_age, PhenoAge, GrimAge, DunedinPACE)
@@ -616,7 +617,7 @@ $$\text{EAA}_i = \varepsilon_i$$
 &#x1F4CC; DunedinPACE is a rate-based clock (units: pace of aging, not years). EAA and EAD are not calculated for DunedinPACE.
 </div>
 
-```{r compute-ead-eaa}
+```{r}
 
 clocks <- c("Horvath_age", "Hannum_age", "PhenoAge", "GrimAge")
 eaa_names <- c("Horvath_EAA", "Hannum_EAA", "PhenoAge_EAA", "GrimAge_EAA")
@@ -662,8 +663,6 @@ pheatmap(
 
 ## EAA, EAD vs Age
 ```{r}
-
-
 clocks <- c("Horvath", "Hannum", "PhenoAge", "GrimAge")
 plot_list <- list()
 
@@ -705,7 +704,6 @@ in most cases as it is robust to data preprocessing and array platform/version d
 - EAA values are sample-set-dependent: the estimates will have to be re-calculated when the cohort composition changes (e.g. add or remove samples).
 - **EAD** is more likely to correlate with chronological age and is more sensitive to data preprocessing and array platform/version differences.
 
-</div>
 
 ---
 
@@ -961,27 +959,27 @@ Overall, cell type compositions are typically accounted for EAA association anal
 - **Age is a critical covariate**: in the ACHD dataset, adding Age as a covariate reveals a stronger surgery effect because age was suppressing the signal (suppressor variable).
 - **Cell-type correction attenuates** the surgery effect, indicating that some apparent EAA differences are attributable to immune cell composition shifts rather than intrinsic cellular aging. The model with cell type as covariates isolates the effect of Fontan surgery on EAA independent of predicted immune composition.
 - Apply multiple testing correction when testing associations across multiple clocks simultaneously.
-</div>
+
 
 ## References
 
 <div style="background:#f4f9fd; border-left:4px solid #aed6f1; border-radius:0 4px 4px 0; padding:14px 18px; margin:20px 0;">
 
-- Horvath S. (2013). DNA methylation age of human tissues and cell types. *Genome Biology*. [doi:10.1186/gb-2013-14-10-r115](https://doi.org/10.1186/gb-2013-14-10-r115)
-- Hannum G. et al. (2013). Genome-wide methylation profiles reveal quantitative views of human aging rates. *Molecular Cell*. [doi:10.1016/j.molcel.2012.10.016](https://doi.org/10.1016/j.molcel.2012.10.016)
-- Levine ME et al. (2018). An epigenetic biomarker of aging for lifespan and healthspan. *Aging*. [doi:10.18632/aging.101414](https://doi.org/10.18632/aging.101414)
-- Lu AT et al. (2019). DNA methylation GrimAge strongly predicts lifespan and healthspan. *Aging*. [doi:10.18632/aging.101684](https://doi.org/10.18632/aging.101684)
-- Belsky DW et al. (2022). DunedinPACE, a DNA methylation biomarker of the pace of aging. *eLife*. [doi:10.7554/eLife.73420](https://doi.org/10.7554/eLife.73420)
-- Zhuang & Jude et al. (2025). *Life Science Alliance*. [doi:10.26508/lsa.202403155](https://www.life-science-alliance.org/content/8/9/e202403155)
-- Konwar et al. (2021). *Epigenetics & Chromatin*. [doi:10.1186/s13072-021-00428-1](https://link.springer.com/article/10.1186/s13072-021-00428-1) 
-- Jain & Zhuang et al. (2026). Epigenetic age acceleration in young adults with congenital heart disease. *Clinical Epigenetics*. [doi:10.1186/s13148-026-02049-5](https://link.springer.com/article/10.1186/s13148-026-02049-5)
+- Horvath S. (2013). DNA methylation age of human tissues and cell types. [**Genome Biology**](https://doi.org/10.1186/gb-2013-14-10-r115)
+- Hannum G. et al. (2013). Genome-wide methylation profiles reveal quantitative views of human aging rates. [**Molecular Cell**](https://doi.org/10.1016/j.molcel.2012.10.016)
+- Levine ME et al. (2018). An epigenetic biomarker of aging for lifespan and healthspan. [**Aging**](https://doi.org/10.18632/aging.101414)
+- Lu AT et al. (2019). DNA methylation GrimAge strongly predicts lifespan and healthspan. [**Aging**](https://doi.org/10.18632/aging.101684)
+- Belsky DW et al. (2022). DunedinPACE, a DNA methylation biomarker of the pace of aging. [**eLife**](https://doi.org/10.7554/eLife.73420)
+- Zhuang & Jude et al. (2025). Accounting for differences between Infinium MethylationEPIC v2 and v1 in DNA methylation–based tools. [**Life Science Alliance**](https://www.life-science-alliance.org/content/8/9/e202403155)
+- Konwar et al. (2021). Risk-focused differences in molecular processes implicated in SARS-CoV-2 infection: corollaries in DNA methylation and gene expression. [**Epigenetics & Chromatin**](https://link.springer.com/article/10.1186/s13072-021-00428-1) 
+- Jain & Zhuang et al. (2026). Epigenetic age acceleration in young adults with congenital heart disease. [**Clinical Epigenetics**](https://link.springer.com/article/10.1186/s13148-026-02049-5)
 
 </div>
 
 
 # Session Information
 
-```{r session-info}
+```{r}
 # Record software versions for reproducibility 
 sessionInfo()
 ```
