@@ -11,6 +11,10 @@
 <h3 style="color:white; margin-top:0;"> Workshop Overview</h3>
 <p style="margin-bottom:0; font-size:1.05em; line-height:1.7;">
 This hands-on tutorial walks through <strong>four activities</strong>:
+
+**This tutorial requires R and R studio and has been tested on R4.5 and R4.6.**
+**Please download the [R markdown file and required data here](https://github.com/kobor-lab/ACM_BCB/tree/main)**
+
 </p>
 <ol style="margin-top: 10px; margin-bottom: 0; line-height: 1.9;">
 <li><strong>Activity 1</strong> &#x2014; DNA methylation exploration and PCA</li>
@@ -20,9 +24,7 @@ This hands-on tutorial walks through <strong>four activities</strong>:
 </ol>
 </div>
 
-[Link to R markdown file](https://github.com/kobor-lab/ACM_BCB/blob/main/Epigenetic_clock_analysis_RMD.Rmd)
 
-[Link to knitted HTML](https://github.com/kobor-lab/ACM_BCB/blob/main/Epigenetic_clock_analysis_HTML.html)
 
 **What's Covered**
 
