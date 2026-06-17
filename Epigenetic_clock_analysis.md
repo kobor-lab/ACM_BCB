@@ -13,7 +13,7 @@
 This hands-on tutorial walks through <strong>four activities</strong>:
 
 **This tutorial requires R and R studio and has been tested on R4.5 and R4.6.**
-**Please download the [R markdown file and required data here](https://github.com/kobor-lab/ACM_BCB/tree/main)**
+**Please download the [R markdown file and required data zipped file](https://github.com/kobor-lab/ACM_BCB/blob/main/Epigenetic_clock_analysis_zip.zip))** and unzip the files. This directory contain the script [Epigenetic_clock_analysis_RMD.Rmd](https://github.com/kobor-lab/ACM_BCB/blob/main/Epigenetic_clock_analysis_RMD.Rmd) and the data files for running the script.
 
 </p>
 <ol style="margin-top: 10px; margin-bottom: 0; line-height: 1.9;">
